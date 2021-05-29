@@ -15,13 +15,14 @@ module Asaas
 
       protected
       def convert_data_to_entity(type)
+        p 'patrick'
         if Asaas::Configuration.api_version == 2
           "Asaas::Entity::#{type.capitalize}".constantize
         else
           "Asaas::#{type.capitalize}".constantize
         end
-      rescue
-        Asaas::Entity::Base
+      rescue => e
+        "Asaas::Entity::#{type.capitalize}".constantize
       end
     end
 
