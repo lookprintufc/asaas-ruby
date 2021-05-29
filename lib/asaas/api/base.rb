@@ -106,7 +106,7 @@ module Asaas
         hash = JSON.parse(@response.body)
         puts hash if Asaas::Configuration.debug
         if hash.fetch("object", false) === "list"
-          entity = hash["data"]
+          entity = Asaas::Entity::Meta.new(hash)
         else
           entity = convert_data_to_entity(hash.fetch("object", false))
           entity = entity.new(hash) if entity

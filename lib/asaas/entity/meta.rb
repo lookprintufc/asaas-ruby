@@ -20,8 +20,8 @@ module Asaas
         else
           "Asaas::#{type.capitalize}".constantize
         end
-      rescue => e
-        "Asaas::Entity::#{type.capitalize}".constantize
+      rescue
+        Asaas::Entity::Base
       end
     end
 
